@@ -14,15 +14,24 @@
         <input [(ngModel)]="code" type="text" class="form-control" placeholder="Country code" aria-label="Country code" aria-describedby="button-addon2">
         <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="searchCity()">Submit</button>
     </div>
-
-    {{weatherParameters.Weather}}
-    {{weatherParameters.Temperature}}
-    {{weatherParameters.maxTemperature}}
-    {{weatherParameters.minTemperature}}
-    {{weatherParameters.thermalSense}}
-    {{weatherParameters.Pressure}}
-    {{weatherParameters.Humidity}}
-    {{weatherParameters.Altitude}}
-    {{weatherParameters.Altitude}}
+    <div>
+        Weather: {{weatherParameters.Weather}}
+        <br>
+        Temperature: {{weatherParameters.Temperature}}
+        <br>
+        Max Temperature: {{weatherParameters.maxTemperature}}
+        <br>
+        Min Temperature: {{weatherParameters.minTemperature}}
+        <br>
+        Thermal sense: {{weatherParameters.thermalSense}}
+        <br>
+        Pressure: {{weatherParameters.Pressure}}
+        <br>
+        Humidity: {{weatherParameters.Humidity}}
+        <br>
+        Latitude: {{weatherParameters.Latitude}}
+        <br>
+        Longitude: {{weatherParameters.Longitude}}
+    </div>
 </body>
 </html>

@@ -20,8 +20,8 @@ export class AppComponent implements OnInit {
     thermalSense: 0,
     Pressure: 0,
     Humidity: 0,
-    Altitude: 0,
-    Latitude: 0
+    Latitude: 0,
+    Longitude: 0
   }
 
   constructor(private waService: WeatherAppService) {
@@ -37,14 +37,14 @@ export class AppComponent implements OnInit {
       result => {
         let res: any = result;
         this.weatherParameters.Weather = res.weather[0].main;
-        this.weatherParameters.Temperature = res.main.temp;
-        this.weatherParameters.maxTemperature = res.main.temp_max;
-        this.weatherParameters.minTemperature = res.main.temp_min;
-        this.weatherParameters.thermalSense = res.main.feels_like;
+        this.weatherParameters.Temperature = res.main.temp - 273.15;
+        this.weatherParameters.maxTemperature = res.main.temp_max - 273.15;
+        this.weatherParameters.minTemperature = res.main.temp_min - 273.15;
+        this.weatherParameters.thermalSense = res.main.feels_like - 273.15;
         this.weatherParameters.Pressure = res.main.pressure;
         this.weatherParameters.Humidity = res.main.humidity;
-        this.weatherParameters.Altitude = res.coord.lat;
-        this.weatherParameters.Latitude = res.coord.lon;
+        this.weatherParameters.Latitude = res.coord.lat;
+        this.weatherParameters.Longitude = res.coord.lon;
       },
       err => console.log(err)
     )
