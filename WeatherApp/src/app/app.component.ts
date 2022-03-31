@@ -37,10 +37,10 @@ export class AppComponent implements OnInit {
       result => {
         let res: any = result;
         this.weatherParameters.Weather = res.weather[0].main;
-        this.weatherParameters.Temperature = res.main.temp - 273.15;
-        this.weatherParameters.maxTemperature = res.main.temp_max - 273.15;
-        this.weatherParameters.minTemperature = res.main.temp_min - 273.15;
-        this.weatherParameters.thermalSense = res.main.feels_like - 273.15;
+        this.weatherParameters.Temperature = Math.round(res.main.temp - 273.15);
+        this.weatherParameters.maxTemperature = Math.round(res.main.temp_max - 273.15);
+        this.weatherParameters.minTemperature = Math.round(res.main.temp_min - 273.15);
+        this.weatherParameters.thermalSense = Math.round(res.main.feels_like - 273.15);
         this.weatherParameters.Pressure = res.main.pressure;
         this.weatherParameters.Humidity = res.main.humidity;
         this.weatherParameters.Latitude = res.coord.lat;
