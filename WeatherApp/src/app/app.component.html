@@ -9,7 +9,7 @@
 </head>
 <body>
     <div>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary"> 
             <div class="container-fluid">
                 <a class="navbar-brand">WeatherApp by Manuel Lores</a> 
                 <div class="collapse navbar-collapse" id="navbarText">
@@ -29,7 +29,7 @@
             </div>
             <div class="input-group mb-3">
                 <input [(ngModel)]="code" type="text" class="form-control" placeholder="Country code" aria-label="Country code" aria-describedby="button-addon2">
-                <button class="btn btn-outline-primary" type="button" id="button-addon2" (click)="searchCity()">Submit</button>
+                <button class="btn btn-primary" type="button" id="button-addon2" (click)="searchCity()">Submit</button>
             </div>
         </div>
         <br>
@@ -49,6 +49,5 @@
             </div>
         </div>
     </div>
-    
 </body>
 </html>
