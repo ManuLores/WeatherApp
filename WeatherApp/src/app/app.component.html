@@ -5,33 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
     <title>WeatherApp</title>
 </head>
 <body>
-    <div class="input-group mb-3">
-        <input [(ngModel)]="city" type="text" class="form-control" placeholder="City name" aria-label="City name" aria-describedby="button-addon2">
-        <input [(ngModel)]="code" type="text" class="form-control" placeholder="Country code" aria-label="Country code" aria-describedby="button-addon2">
-        <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="searchCity()">Submit</button>
-    </div>
     <div>
-        Weather: {{weatherParameters.Weather}}
-        <br>
-        Temperature: {{weatherParameters.Temperature}}°
-        <br>
-        Max Temperature: {{weatherParameters.maxTemperature}}°
-        <br>
-        Min Temperature: {{weatherParameters.minTemperature}}°
-        <br>
-        Thermal sense: {{weatherParameters.thermalSense}}°
-        <br>
-        Pressure: {{weatherParameters.Pressure}} mbar
-        <br>
-        Humidity: {{weatherParameters.Humidity}}%
-        <br>
-        Latitude: {{weatherParameters.Latitude}}
-        <br>
-        Longitude: {{weatherParameters.Longitude}}
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand">WeatherApp by Manuel Lores</a> 
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="https://github.com/ManuLores">GitHub</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </div>
+    <div class="container">
+        <div class="row">
+            <div>
+                <input [(ngModel)]="city" type="text" class="form-control" placeholder="City name" aria-label="City name" aria-describedby="button-addon2">
+            </div>
+            <div class="input-group mb-3">
+                <input [(ngModel)]="code" type="text" class="form-control" placeholder="Country code" aria-label="Country code" aria-describedby="button-addon2">
+                <button class="btn btn-outline-primary" type="button" id="button-addon2" (click)="searchCity()">Submit</button>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div>
+                <ul class="list-group">
+                    <li class="list-group-item">Weather: {{weatherParameters.Weather}}</li>
+                    <li class="list-group-item">Temperature: {{weatherParameters.Temperature}}°</li>
+                    <li class="list-group-item">Max Temperature: {{weatherParameters.maxTemperature}}°</li>
+                    <li class="list-group-item">Min Temperature: {{weatherParameters.minTemperature}}°</li>
+                    <li class="list-group-item">Thermal sense: {{weatherParameters.thermalSense}}°</li>
+                    <li class="list-group-item">Pressure: {{weatherParameters.Pressure}} mbar</li>
+                    <li class="list-group-item">Humidity: {{weatherParameters.Humidity}}%</li>
+                    <li class="list-group-item">Latitude: {{weatherParameters.Latitude}}</li>
+                    <li class="list-group-item">Longitude: {{weatherParameters.Longitude}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
 </body>
 </html>
