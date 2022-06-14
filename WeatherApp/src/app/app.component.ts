@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 import { WeatherAppService } from './services/weather-app.service'
 
@@ -11,6 +12,7 @@ import { WeatherAppService } from './services/weather-app.service'
 export class AppComponent implements OnInit {
   code: string = "";
   city: string = "";
+  cityMap: string = "";
 
   weatherParameters = {
     Weather: "",
@@ -24,7 +26,7 @@ export class AppComponent implements OnInit {
     Longitude: 0
   }
 
-  constructor(private waService: WeatherAppService) {
+  constructor(private waService: WeatherAppService, public sanitizer: DomSanitizer) {
   }
 
   ngOnInit() {
@@ -45,6 +47,7 @@ export class AppComponent implements OnInit {
         this.weatherParameters.Humidity = res.main.humidity;
         this.weatherParameters.Latitude = res.coord.lat;
         this.weatherParameters.Longitude = res.coord.lon;
+        this.cityMap = this.city;
       },
       err => console.log(err)
     )
