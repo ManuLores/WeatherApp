@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { City } from './city';
 
 import { WeatherAppService } from './services/weather-app.service'
 
@@ -13,6 +14,7 @@ export class AppComponent implements OnInit {
   code: string = "";
   city: string = "";
   cityMap: string = "";
+  favoriteCities: City[] = [];
 
   weatherParameters = {
     Weather: "",
@@ -27,14 +29,19 @@ export class AppComponent implements OnInit {
   }
 
   constructor(private waService: WeatherAppService, public sanitizer: DomSanitizer) {
+    this.recoverCityData();
   }
 
   ngOnInit() {
     
   }
 
-  searchCity() {
-    console.log(this.city, this.code)
+  searchCity(city?: string, code?: string) {
+    if(city && code) {
+      this.city = city;
+      this.code = code;
+    }
+
     this.waService.getWeather(this.city, this.code).subscribe(
       result => {
         let res: any = result;
@@ -51,5 +58,34 @@ export class AppComponent implements OnInit {
       },
       err => console.log(err)
     )
+  }
+
+  addCity(){
+    let cityFav = {
+      city: this.city,
+      code: this.code
+    }
+
+    this.favoriteCities.push(cityFav);
+
+    localStorage.setItem("cityFav", JSON.stringify(this.favoriteCities));
+  }
+
+  recoverCityData(){
+    let cityF = localStorage.getItem("cityFav")
+
+    let cityFav = JSON.parse(cityF ? cityF : "[]");
+
+    this.favoriteCities = cityFav
+  }
+
+  removeCity(){
+    this.favoriteCities = this.favoriteCities.filter(cityF => cityF.city != this.city)
+
+    localStorage.setItem("cityFav", JSON.stringify(this.favoriteCities));
+  }
+
+  get isFavorite(){
+    return this.favoriteCities.find(cityF => cityF.city == this.city)
   }
 }

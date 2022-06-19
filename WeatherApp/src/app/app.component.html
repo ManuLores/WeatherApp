@@ -3,15 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <title>WeatherApp</title>
 </head>
 <body>
     <div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary"> 
             <div class="container-fluid">
-                <a class="navbar-brand">WeatherApp by Manuel Lores</a> 
+                <a class="navbar-brand">WeatherApp</a> 
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                      Favorite Cities
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                      <li *ngFor="let cityFav of favoriteCities"><button class="dropdown-item" type="button" (click)="searchCity(cityFav.city, cityFav.code)">{{cityFav.city}}</button></li>
+                    </ul>
+                  </div>
                 <div class="collapse navbar-collapse" id="navbarText">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
@@ -19,6 +26,9 @@
                         </li>
                     </ul>
                 </div>
+                <span class="navbar-text">
+                    by Manuel Lores
+                </span>
             </div>
         </nav>
     </div>
@@ -51,6 +61,10 @@
                             <li class="list-group-item">Longitude: {{weatherParameters.Longitude}}</li>
                         </ul>
                     </div>
+                    <div class="col-12 mt-4">
+                        <button *ngIf="!isFavorite" class="btn btn-primary col-12" type="button" id="button-addon3" (click)="addCity()">Add City to Favorites</button>
+                        <button *ngIf="isFavorite" class="btn btn-primary col-12" type="button" id="button-addon3" (click)="removeCity()">Remove City from Favorites</button>
+                    </div>
                 </div>
             </div>
             <div class="col-12 col-lg-10">
@@ -58,5 +72,7 @@
             </div>
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </body>
 </html>
